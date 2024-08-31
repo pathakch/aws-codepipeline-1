@@ -1,2 +1,5 @@
+from datetime import datetime
+current_datetime = datetime.datetime.now()
+
 def lambda_fn(event, context):
-    print("Hi This is lambda function created in codepipeline_1 practice session")
+    print(f"This is the current datetime {current_datetime} in region ap-south-1 ")
