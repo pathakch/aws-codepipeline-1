@@ -11,7 +11,7 @@ from resource_stack.resource_stack import ResourceStack
 class DeployStage(Stage):
     def __init__(self, scope: Construct, id = str, env = Environment, **kwargs):
         super().__init__(scope, id, env = env, **kwargs)
-        ResourceStack(self, 'ResourceStack', env = env, stack_name = 'resource-stack-deploy')
+        ResourceStack(self, 'ResourceStack', env = env, stack_name = 'resource-stack-deploy-1')
 
 class AwsCodePipelineStack(Stack):
     def __init__(self, scope: Construct, construct_id : str, **kwargs)-> None:
