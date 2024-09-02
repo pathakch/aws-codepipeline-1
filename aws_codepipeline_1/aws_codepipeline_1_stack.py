@@ -6,14 +6,14 @@ from aws_cdk import (
     aws_codepipeline as codepipeline
 )
 from constructs import Construct
-from resource_stack.resource_stack import ResourceStack
+from resource_stack.resource_stack import ResourceStackOne
 
-class DeployStage(Stage):
+class DeployStageOne(Stage):
     def __init__(self, scope: Construct, id = str, env = Environment, **kwargs):
         super().__init__(scope, id, env = env, **kwargs)
-        ResourceStack(self, 'ResourceStack', env = env, stack_name = 'resource-stack-deploy-1')
+        ResourceStackOne(self, 'ResourceStack', env = env, stack_name = 'resource-stack-deploy-1')
 
-class AwsCodePipelineStack(Stack):
+class CodePipelineOneStack(Stack):
     def __init__(self, scope: Construct, construct_id : str, **kwargs)-> None:
         super().__init__(scope, construct_id, **kwargs)
 
@@ -45,8 +45,8 @@ class AwsCodePipelineStack(Stack):
         )
 
         deployment_wave = pipeline.add_wave("DeploymentWave")
-        deployment_wave.add_stage(DeployStage(
+        deployment_wave.add_stage(DeployStageOne(
             self,
-            'DeployStage',
+            'DeployStageOne',
             env = (Environment(account = '189508241034', region = 'ap-south-1'))
         ))
